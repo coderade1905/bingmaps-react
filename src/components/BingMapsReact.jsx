@@ -37,7 +37,7 @@ export default function BingMapsReact({
         newPin.metadata = {
           ...pushPin.options,
         };
-        Maps.Events.addHandler(newPin, "mouseover", (e) => {
+        Maps.Events.addHandler(newPin, "click", (e) => {
           infobox.setOptions({
             title: e.target.metadata.title,
             description: e.target.metadata.description,
@@ -45,11 +45,6 @@ export default function BingMapsReact({
             location: newPin.getLocation(),
             visible: true,
             ...pushPin.infobox,
-          });
-        });
-        Maps.Events.addHandler(newPin, "mouseout", (e) => {
-          infobox.setOptions({
-            visible: false,
           });
         });
         map.entities.push(newPin);
